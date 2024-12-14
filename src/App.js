@@ -79,23 +79,22 @@ function App() {
 
   return (
     <div className="App">
-      <div style={{ position: "relative", height: "800px", width: "700px" }}>
-        <MainContainer>
-          <ChatContainer>       
-            <MessageList 
-              scrollBehavior="smooth" 
-              typingIndicator={isTyping ? <TypingIndicator content="Grok is typing..." /> : null}
-            >
-              {messages.map((message, i) => {
-                return <Message key={i} model={message} />
-              })}
-            </MessageList>
-            <MessageInput placeholder="Type message here" onSend={handleSend} />        
-          </ChatContainer>
-        </MainContainer>
-      </div>
+      <div className="AppHeader">CitiEasy</div>
+      <MainContainer>
+        <ChatContainer>
+          <MessageList
+            scrollBehavior="smooth"
+            typingIndicator={isTyping ? <TypingIndicator content="Grok is typing..." /> : null}
+          >
+            {messages.map((msg, idx) => (
+              <Message key={idx} model={msg} />
+            ))}
+          </MessageList>
+          <MessageInput placeholder="Type a message..." onSend={handleSend} />
+        </ChatContainer>
+      </MainContainer>
     </div>
-  )
+  );
 }
 
 export default App;
